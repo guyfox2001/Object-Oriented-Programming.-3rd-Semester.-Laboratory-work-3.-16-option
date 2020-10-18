@@ -18,13 +18,13 @@
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="FirstVectorFuction.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="VectorFunction.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="SecondVectorFuction.cpp">
+    <ClCompile Include="SecondVectorFunction.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstVectorFunction.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,10 +32,10 @@
     <ClInclude Include="VectorFunction.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="FirstVectorFuction.h">
+    <ClInclude Include="SecondVectorFunction.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="SecondVectorFuction.h">
+    <ClInclude Include="FirstVectorFunction.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,11 +1,11 @@
-#include "FirstVectorFuction.h"
+#include "FirstVectorFunction.h"
 
-FirstVectorFuction::FirstVectorFuction()
+FirstVectorFunction::FirstVectorFunction()
 {
 	this->OurVector = nullptr;
 }
 
-FirstVectorFuction::FirstVectorFuction(uint8_t Dim)
+FirstVectorFunction::FirstVectorFunction(uint8_t Dim)
 {
 	try {
 		if (Dim > 0) {
@@ -21,7 +21,7 @@ FirstVectorFuction::FirstVectorFuction(uint8_t Dim)
 	}
 }
 
-FirstVectorFuction::~FirstVectorFuction()
+FirstVectorFunction::~FirstVectorFunction()
 {
 	if (this->OurVector == nullptr) {
 		return;
@@ -31,10 +31,11 @@ FirstVectorFuction::~FirstVectorFuction()
 	}
 }
 
-void FirstVectorFuction::calc_result()
+void FirstVectorFunction::calc_result()
 {
 	try {
 		if (OurVector != nullptr) {
+			this->set_result(0);
 			for (int cnt = 0; cnt < this->get_DimensionVectorSpace(); cnt++) {
 				this->set_result(this->get_result() + (OurVector[cnt].a / OurVector[cnt].x + OurVector[cnt].b) * OurVector[cnt].base_vector);
 			}
@@ -48,26 +49,26 @@ void FirstVectorFuction::calc_result()
 	}
 }
 
-ParamsForFirstVectorFunction* FirstVectorFuction::get_vector()
+ParamsForFirstVectorFunction* FirstVectorFunction::get_vector()
 {
 	return this->OurVector;
 }
 
-void FirstVectorFuction::set_vector(ParamsForFirstVectorFunction* NewVector)
+void FirstVectorFunction::set_vector(ParamsForFirstVectorFunction* NewVector)
 {
 	this->OurVector = NewVector;
 }
 
-void FirstVectorFuction::resize(uint8_t size)
+void FirstVectorFunction::resize(uint8_t size)
 {
-	this->~FirstVectorFuction();
+	this->~FirstVectorFunction();
 	this->OurVector = new ParamsForFirstVectorFunction[size];
 	this->set_DimensionVectorSpace(size);
 
 }
 
 
-std::ostream& operator<<(std::ostream& OutStream, FirstVectorFuction& OurObj)
+std::ostream& operator<<(std::ostream& OutStream, FirstVectorFunction& OurObj)
 {
 	try {
 		if (OurObj.OurVector != nullptr) {
@@ -85,7 +86,7 @@ std::ostream& operator<<(std::ostream& OutStream, FirstVectorFuction& OurObj)
 			}
 		}
 		else {
-
+			throw "Exception! OurObj.OurVector is nullptr! Initilaze the vector\n";
 		}
 	}
 	catch (const char* Exceptionstring) {
@@ -94,7 +95,7 @@ std::ostream& operator<<(std::ostream& OutStream, FirstVectorFuction& OurObj)
 	return OutStream;
 }
 
-std::istream& operator>>(std::istream& InputStream, FirstVectorFuction& OurObj)
+std::istream& operator>>(std::istream& InputStream, FirstVectorFunction& OurObj)
 {
 	if (OurObj.OurVector == nullptr) {
 		std::cout << "Vector not initialized. Please input DimensionVectorSpace \n";

@@ -6,17 +6,17 @@ struct ParamsForFirstVectorFunction
 	
 };
 
-class FirstVectorFuction : public VectorFunction {
+class FirstVectorFunction : public VectorFunction {
 public:
-	FirstVectorFuction();
-	FirstVectorFuction(uint8_t Dim);
-	~FirstVectorFuction();
+	FirstVectorFunction();
+	FirstVectorFunction(uint8_t Dim);
+	~FirstVectorFunction();
 	void calc_result();
 	ParamsForFirstVectorFunction* get_vector();
 	void set_vector(ParamsForFirstVectorFunction* NewVector);
 	void resize(uint8_t size);
-	friend std::ostream& operator<< (std::ostream& OutStream  , FirstVectorFuction& OurObj);
-	friend std::istream& operator>> (std::istream& InputStream, FirstVectorFuction& OurObj);
+	friend std::ostream& operator<< (std::ostream& OutStream  , FirstVectorFunction& OurObj);
+	friend std::istream& operator>> (std::istream& InputStream, FirstVectorFunction& OurObj);
 private:
 	ParamsForFirstVectorFunction* OurVector = nullptr;
 };

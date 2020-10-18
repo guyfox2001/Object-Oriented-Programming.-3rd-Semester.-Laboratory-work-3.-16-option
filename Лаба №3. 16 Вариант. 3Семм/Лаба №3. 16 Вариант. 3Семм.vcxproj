@@ -139,14 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="FirstVectorFuction.cpp" />
+    <ClCompile Include="FirstVectorFunction.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="SecondVectorFuction.cpp" />
+    <ClCompile Include="SecondVectorFunction.cpp" />
     <ClCompile Include="VectorFunction.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FirstVectorFuction.h" />
-    <ClInclude Include="SecondVectorFuction.h" />
+    <ClInclude Include="FirstVectorFunction.h" />
+    <ClInclude Include="SecondVectorFunction.h" />
     <ClInclude Include="VectorFunction.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

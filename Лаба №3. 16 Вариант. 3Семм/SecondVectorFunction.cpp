@@ -1,16 +1,16 @@
-#include "SecondVectorFuction.h"
+#include "SecondVectorFunction.h"
 
-SecondVectorFuction::SecondVectorFuction()
+SecondVectorFunction::SecondVectorFunction()
 {
 	this->OurVector = nullptr;
 }
 
-SecondVectorFuction::SecondVectorFuction(uint8_t Dim)
+SecondVectorFunction::SecondVectorFunction(uint8_t Dim)
 {
 	try {
 		if (Dim > 0) {
 			this->set_DimensionVectorSpace(Dim);
-			this->OurVector = new ParamsForFirstVectorFunction[Dim];
+			this->OurVector = new ParamsForSecondVectorFunction[Dim];
 		}
 		else {
 			throw "Exñeption! DimensionVectorSpace can't be less 0\n";
@@ -21,7 +21,7 @@ SecondVectorFuction::SecondVectorFuction(uint8_t Dim)
 	}
 }
 
-SecondVectorFuction::~SecondVectorFuction()
+SecondVectorFunction::~SecondVectorFunction()
 {
 	if (this->OurVector == nullptr) {
 		return;
@@ -31,10 +31,11 @@ SecondVectorFuction::~SecondVectorFuction()
 	}
 }
 
-void SecondVectorFuction::calc_result()
+void SecondVectorFunction::calc_result()
 {
 	try {
 		if (OurVector != nullptr) {
+			this->set_result(0);
 			for (int cnt = 0; cnt < this->get_DimensionVectorSpace(); cnt++) {
 				this->set_result(this->get_result() + (OurVector[cnt].a * std::log10(OurVector[cnt].x * OurVector[cnt].b) + OurVector[cnt].c) * OurVector[cnt].base_vector);
 			}
@@ -48,30 +49,30 @@ void SecondVectorFuction::calc_result()
 	}
 }
 
-ParamsForFirstVectorFunction* SecondVectorFuction::get_vector()
+ParamsForSecondVectorFunction* SecondVectorFunction::get_vector()
 {
 	return this->OurVector;
 }
 
-void SecondVectorFuction::set_vector(ParamsForFirstVectorFunction* NewVector)
+void SecondVectorFunction::set_vector(ParamsForSecondVectorFunction* NewVector)
 {
 	this->OurVector = NewVector;
 }
 
-void SecondVectorFuction::resize(uint8_t size)
+void SecondVectorFunction::resize(uint8_t size)
 {
-	this->~SecondVectorFuction();
-	this->OurVector = new ParamsForFirstVectorFunction[size];
+	this->~SecondVectorFunction();
+	this->OurVector = new ParamsForSecondVectorFunction[size];
 	this->set_DimensionVectorSpace(size);
 
 }
 
 
-std::ostream& operator<<(std::ostream& OutStream, SecondVectorFuction& OurObj)
+std::ostream& operator<<(std::ostream& OutStream, SecondVectorFunction& OurObj)
 {
 	try {
 		if (OurObj.OurVector != nullptr) {
-			OutStream << "Our function is a/x + b\n";
+			OutStream << "Our function is a * lg(b * x) + c\n";
 			OutStream << "Our DimensionVectorSpace" << OurObj.get_DimensionVectorSpace() << '\n';
 			if (OurObj.get_result() != INT_MIN) {
 				OutStream << "Our value of Vector Function " << OurObj.get_result() << '\n';
@@ -85,7 +86,7 @@ std::ostream& operator<<(std::ostream& OutStream, SecondVectorFuction& OurObj)
 			}
 		}
 		else {
-
+			throw "Exception! OurObj.OurVector is nullptr! Initilaze the vector\n";
 		}
 	}
 	catch (const char* Exceptionstring) {
@@ -94,7 +95,7 @@ std::ostream& operator<<(std::ostream& OutStream, SecondVectorFuction& OurObj)
 	return OutStream;
 }
 
-std::istream& operator>>(std::istream& InputStream, SecondVectorFuction& OurObj)
+std::istream& operator>>(std::istream& InputStream, SecondVectorFunction& OurObj)
 {
 	if (OurObj.OurVector == nullptr) {
 		std::cout << "Vector not initialized. Please input DimensionVectorSpace \n";
